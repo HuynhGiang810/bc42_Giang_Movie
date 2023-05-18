@@ -1,14 +1,19 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import { apiGetBanners } from '../../../API/movieAPI';
-import Swiper, {Navigation, Pagination} from 'swiper'
-import  { SwiperSlide } from "swiper/react";
-import SwiperCore, { EffectFade } from "swiper";
-// import "./styles.css";
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import "swiper/swiper-bundle.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+import "./styles.css";
+
+// import required modules
+import { Pagination } from "swiper";
+
+
+
 
 function Banner() {
   const [banners, setBanners] = useState([]);
@@ -34,12 +39,11 @@ function Banner() {
     <Swiper
       navigation={true}
       pagination={{ clickable: true }}
-      modules={[Navigation, Pagination, EffectFade]}
-     
     >
       {banners.map((item, index) => (
         <SwiperSlide key={index} className="swiper-slide">
           <img
+          
             src={item.hinhAnh}
             alt={item.maBanner}
             

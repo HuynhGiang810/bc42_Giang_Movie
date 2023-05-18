@@ -2,6 +2,12 @@ import React from 'react';
 import { apiGetMovies } from '../../../API/movieAPI';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { CardImg } from 'react-bootstrap'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container';
+import Card  from 'react-bootstrap/Card';
+import Button  from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
 
 function Movies() {
   const [movies, setMovies] = useState([]);
@@ -10,6 +16,7 @@ function Movies() {
   const getMovies = async () => {
     try {
       const data = await apiGetMovies();
+      console.log(data);
       setMovies(data.content);
     } catch (error) {
       console.log(error);
@@ -23,29 +30,23 @@ function Movies() {
 
   return (
     <div>
-      {movies.map((item) => {
-        return (
-          <div>
-            <span>{item.tenPhim}</span>
-            <button onClick={() => navigate(`/movies/${item.maPhim}`)}>
-              Mua vé
-            </button>
-
-            {/* <Modal show={..} onHide={...}>
-              <ReactPlayer
-                url={item.trailer}
-                config={{
-                  youtube: {
-                    playerVars: {
-                      autoplay: 1,
-                    },
-                  },
-                }}
-              />
-            </Modal> */}
-          </div>
-        );
-      })}
+      <h1 className='text-center'>Phim Đang Chiếu</h1>
+      <Row>
+        {movies.map((item) => {
+          return (
+            <Col md={4}>
+              <Card className='mt-4'>
+                <CardImg style={{height:400,}} src={item.hinhAnh} />
+                <Card.Body>
+                  <Card.Title>{item.tenPhim}</Card.Title>
+                  <Button className='me-3' onClick={()=> navigate(`/movies/${item.maPhim}`)}>Mua Vé</Button>
+                  <Button >Xem Trailer</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          )
+        })}
+      </Row>
     </div>
   )
 }
