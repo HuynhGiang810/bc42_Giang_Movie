@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import { CardImg } from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container';
-import Card  from 'react-bootstrap/Card';
-import Button  from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 
 function Movies() {
@@ -16,7 +16,6 @@ function Movies() {
   const getMovies = async () => {
     try {
       const data = await apiGetMovies();
-      console.log(data);
       setMovies(data.content);
     } catch (error) {
       console.log(error);
@@ -36,10 +35,10 @@ function Movies() {
           return (
             <Col md={4}>
               <Card className='mt-4'>
-                <CardImg style={{height:400,}} src={item.hinhAnh} />
+                <CardImg style={{ height: 400, }} src={item.hinhAnh} />
                 <Card.Body>
                   <Card.Title>{item.tenPhim}</Card.Title>
-                  <Button className='me-3' onClick={()=> navigate(`/movies/${item.maPhim}`)}>Mua Vé</Button>
+                  <Button className='me-3' onClick={() => navigate(`/movies/${item.maPhim}`)}>Mua Vé</Button>
                   <Button >Xem Trailer</Button>
                 </Card.Body>
               </Card>
@@ -48,7 +47,7 @@ function Movies() {
         })}
       </Row>
     </div>
-  )
+  );
 }
 
 export default Movies

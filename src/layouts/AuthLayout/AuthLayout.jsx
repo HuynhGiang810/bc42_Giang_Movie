@@ -6,6 +6,7 @@ import styles from "./AuthLayout.module.scss"
 function AuthLayout() {
   return (
     <div className={styles.background}>
+      <Header/>
       <div className={styles.container}>
         <div className={styles.box}>
           <Outlet />
@@ -13,6 +14,7 @@ function AuthLayout() {
       </div>
     </div>
   )
+
 }
 
 export default AuthLayout

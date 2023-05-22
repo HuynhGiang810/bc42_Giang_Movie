@@ -8,6 +8,7 @@ import Signup from './modules/Auth/SignUp/SignUp';
 import ProtectedRoute from './route/ProtectedRoute';
 import Booking from './modules/Booking/Booking';
 import AuthLayout from './layouts/AuthLayout/AuthLayout';
+import Header from './component/Header/Header';
 
 
 function App() {
