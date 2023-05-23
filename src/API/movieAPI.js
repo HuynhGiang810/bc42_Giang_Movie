@@ -36,20 +36,19 @@ export const apiGetMovieDetails = async (movieId) => {
 };
 
 
-export const apiGetMovieShowTime = async (movieId) => {
+export const apiGetMovieShowTime = async () => {
   const { data } = await axiosClient.get("/QuanLyRap/LayThongTinHeThongRap", {
     params: {
-      MaPhim: movieId,
     },
   });
 
   return data;
 };
 
-export const apiGetMovieSchedule = async (cinemaId) => {
-  const { data } = await axiosClient.get("/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP14", {
+export const apiGetMovieSchedule = async (movieId) => {
+  const { data } = await axiosClient.get("/QuanLyRap/LayThongTinLichChieuPhim", {
     params: {
-      MaPhim: cinemaId,
+      MaPhim: movieId,
     },
   });
   return data;

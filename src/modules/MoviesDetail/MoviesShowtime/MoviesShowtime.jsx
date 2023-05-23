@@ -8,7 +8,6 @@ import moment from "moment";
 // import styles from "./MoviesShowtime.module.scss"
 
 
-
 function MoviesShowtime({ movieId }) {
   const { TabPane } = Tabs;
   const [cumrap, setCumrap] = useState([]);
@@ -20,7 +19,7 @@ function MoviesShowtime({ movieId }) {
 
   const getMovieShowtime = async () => {
     try {
-      const data = await apiGetMovieShowTime(movieId);
+      const data = await apiGetMovieShowTime();
       console.log(data);
       setMovieShowtime(data.content);
     } catch (error) {
@@ -30,9 +29,9 @@ function MoviesShowtime({ movieId }) {
 
   const getMovieSchedule = async () => {
     try {
-      const data = await apiGetMovieSchedule(maHeThongRap);
+      const data = await apiGetMovieSchedule(movieId);
+      console.log(data);
       setCumrap(data.content);
-      return data.conent;
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +55,7 @@ function MoviesShowtime({ movieId }) {
   };
   return (
     <div>
-      <div style={{ backgroundColor: "rgb(10 32 41)" }}>
+      <div>
         <div dir="left" >
           <Tabs tabPosition={tabPosition}>
             {movieShowtime.map((heThong, index) => {
