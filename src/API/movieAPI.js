@@ -54,3 +54,13 @@ export const apiGetMovieSchedule = async (movieId) => {
   return data;
 };
 
+export const apiCreateMovie = async (movie) => {
+  const formData = new FormData();
+  for (let key in movie) {
+    formData.append(key, movie[key]);
+  }
+  formData.append("maNhom", "GP14");
+
+  await axiosClient.post("/QuanLyPhim/ThemPhimUploadHinh", formData);
+};
+

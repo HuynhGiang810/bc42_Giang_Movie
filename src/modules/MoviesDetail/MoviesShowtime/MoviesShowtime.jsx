@@ -69,97 +69,30 @@ function MoviesShowtime({ movieId }) {
                       style={{ height: "50px" }}
                       src={heThong.logo}
                       alt="logo"
-                      onClick={() => setMaHeThongRap(heThong.maHeThongRap)}
+                    
                     />
-                  }
-                >
+                  }>
                   <Tabs tabPosition={tabPosition}>
-                    {cumrap[0]?.lstCumRap
-                      ?.slice(0, 6)
-                      .map((cumRap, subIndex) => {
-                        // console.log("lst cum rap", cumRap);
-                        return (
-                          <TabPane
-                            
-                            key={subIndex}
+                    {cumrap?.heThongRapChieu?.map((cumRap, index) => {
+                      return (
+                        heThong.maHeThongRap === cumRap.maHeThongRap && (
+                          <TabPane key={index}
                             tab={
-                              <>
-                                <h1
-                                  style={{
-                                    fontSize: "large",
-                                    textAlign: "justify",
-                                    width: "500px",
-                                  }}
-                                >
-                                  {cumRap.tenCumRap}
-                                </h1>
-                                <p
-                                  style={{
-                                    textAlign: "justify",
-                                    width: "500px",
-                                  }}
-                                >
-                                  {cumRap.diaChi}
-                                </p>
-                              </>
-                            }
-                          >
-                            {cumRap?.danhSachPhim.map((phim, index) => {
-                              // console.log("phim", phim);
+                              <div>
+                                <p>{cumRap?.cumRapChieu[0]?.tenCumRap}</p>
+                                <p>{cumRap?.cumRapChieu[0]?.diaChi}</p>
+                              </div>}>
+                            {cumRap?.cumRapChieu[0]?.lichChieuPhim?.map((lichChieu,index) =>{
                               return (
-                                <div >
-                                  <div>
-                                    <img
-                                      src={phim.hinhAnh}
-                                      style={{
-                                        width: "100px",
-                                        height: "150px",
-                                      }}
-                                      alt="img"
-                                    />
-                                  </div>
-                                  <div style={{ marginLeft: "10px" }}>
-                                    <p
-                                      style={{
-                                        fontSize: "large",
-                                        textAlign: "justify",
-                                        fontWeight: "700",
-                                        textTransform: "capitalize",
-                                      }}
-                                    >
-                                      {phim.tenPhim}
-                                    </p>
-                                    <div>
-                                      <Container style={{ width: "345px" }}>
-                                        <Row>
-                                          {phim?.lstLichChieuTheoPhim
-                                            .slice(0, 4)
-                                            ?.map((lich, index) => {
-                                              return (
-                                                <Col xs={6} md={6}>
-                                                  <p
-                                                    key={index}
-                                                    style={{
-                                                      textAlign: "justify",
-                                                    }}
-                                                  >
-                                                    {moment(
-                                                      lich.ngayChieuGioChieu
-                                                    ).format("DD/MM ~ hh:mm A")}
-                                                  </p>
-                                                </Col>
-                                              );
-                                            })}
-                                        </Row>
-                                      </Container>
-                                    </div>
-                                  </div>
+                                <div key={index}>
+                                  {lichChieu.ngayChieuGioChieu}
                                 </div>
-                              );
+                              )
                             })}
                           </TabPane>
-                        );
-                      })}
+                        )
+                      )
+                    })}
                   </Tabs>
                 </TabPane>
               );

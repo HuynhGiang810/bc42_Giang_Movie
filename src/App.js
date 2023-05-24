@@ -25,6 +25,8 @@ function App() {
             </ProtectedRoute>} />
         </Route>
 
+        <Route path="/moive/"/>
+
         <Route path='/' element={<AuthLayout />}>
           <Route path='/signin' element={<Signin />} />
           <Route path="/signout" element={<Signup />} />
