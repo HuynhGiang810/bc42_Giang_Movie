@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
-import ReactPlayer from "react"
+import ReactPlayer from "react-player"
 import { Modal } from "react-bootstrap";
 import styles from "./Movies.module.scss";
 
@@ -16,7 +16,7 @@ import styles from "./Movies.module.scss";
 function Movies() {
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [trailer, setTrailer] = useState("");
   console.log(trailer);
 
@@ -35,12 +35,12 @@ function Movies() {
   }, []);
 
   const handleOpenModal = (trailer) => {
-    setOpen(true);
+    setIsOpen(true);
     setTrailer(trailer);
   };
 
   const handleCloseModal = () => {
-    setOpen(false);
+    setIsOpen(false);
   };
 
   return (
